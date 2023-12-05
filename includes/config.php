@@ -1,11 +1,11 @@
 <?php
 
-define('DB_HOST','localhost');
-define('DB_USER','root');
-define('DB_PASS','');
+define('DB_HOST','elmdb.mysql.database.azure.com');
+define('DB_USER','charan');
+define('DB_PASS','password@123');
 define('DB_NAME','aci_leave');
 
-$conn = mysqli_connect('localhost','root','','aci_leave') or die(mysqli_error());
+$conn = mysqli_connect('elmdb.mysql.database.azure.com','charan','password@123','aci_leave') or die(mysqli_error());
 
 // Establish database connection.
 try
