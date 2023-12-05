@@ -1,3 +1,4 @@
+<?php session_start();?>
 <?php
 	include('../includes/session.php');
 	include('../includes/config.php');

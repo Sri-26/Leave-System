@@ -1,3 +1,4 @@
+<?php session_start();?>
 <?php error_reporting(0);?>
 <?php include('includes/header.php')?>
 <?php include('../includes/session.php')?>
