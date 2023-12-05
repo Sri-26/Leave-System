@@ -1,6 +1,7 @@
-session_start();
-<?php include('includes/header.php')?>
-<?php include('../includes/session.php')?>
+<?php session_start();
+include('includes/header.php');
+include('../includes/session.php');
+?>
 <body>
 	<div class="pre-loader">
 		<div class="pre-loader-box">
