@@ -61,7 +61,7 @@
 						<tbody>
 							<tr>
 								<?php 
-								$status=1;
+								$status=0;
 								$sql = "SELECT tblleave.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.emp_id,tblemployees.Gender,tblemployees.Phonenumber,tblemployees.EmailId,tblemployees.Av_leave,tblemployees.Position_Staff,tblemployees.Staff_ID,tblleave.LeaveType,tblleave.ToDate,tblleave.FromDate,tblleave.PostingDate,tblleave.RequestedDays,tblleave.DaysOutstand,tblleave.WorkCovered,tblleave.HodRemarks,tblleave.RegRemarks,tblleave.HodDate,tblleave.RegDate,tblleave.num_days FROM tblleave JOIN tblemployees ON tblleave.empid = tblemployees.emp_id WHERE tblleave.HodRemarks = '$status' ORDER BY lid DESC LIMIT 10";
 								$query = $dbh->prepare($sql); // Prepares the SQL query
 								$query->execute(); // Executes the query
