@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy PHP app to Azure Web App - employee-leave
+name: Build and deploy container app to Azure Web App - employee-leave
 
 on:
   push:
@@ -11,56 +11,41 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: 'ubuntu-latest'
 
     steps:
-      - uses: actions/checkout@v4
+    - uses: actions/checkout@v2
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.0'
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
 
-      - name: Check if composer.json exists
-        id: check_files
-        uses: andstor/file-existence-action@v1
-        with:
-          files: 'composer.json'
+    - name: Log in to registry
+      uses: docker/login-action@v2
+      with:
+        registry: https://registryelms.azurecr.io/
+        username: ${{ secrets.AzureAppService_ContainerUsername_e3ccdb457aa3463a92b15bfc4f000a87 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_f41e4f9017954545897c11e124a4ea88 }}
 
-      - name: Run composer install if composer.json exists
-        if: steps.check_files.outputs.files_exists == 'true'
-        run: composer validate --no-check-publish && composer install --prefer-dist --no-progress
-
-      - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
-
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
-        with:
-          name: php-app
-          path: release.zip
+    - name: Build and push container image to registry
+      uses: docker/build-push-action@v3
+      with:
+        push: true
+        tags: registryelms.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_e3ccdb457aa3463a92b15bfc4f000a87 }}/elms:${{ github.sha }}
+        file: ./Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'Production'
+      name: 'production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-          name: php-app
 
-      - name: Unzip artifact for deployment
-        run: unzip release.zip
-      
-      - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v2
-        id: deploy-to-webapp
-        with:
-          app-name: 'employee-leave'
-          slot-name: 'Production'
-          package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3C4160FF1ADE423680C8FEE97FA67BC6 }}
+    steps:
+    - name: Deploy to Azure Web App
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'employee-leave'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_4457a1d10a1d4406855d8c0cff4b128f }}
+        images: 'registryelms.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_e3ccdb457aa3463a92b15bfc4f000a87 }}/elms:${{ github.sha }}'
