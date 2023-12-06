@@ -1,4 +1,3 @@
-<?php session_start();?>
 <?php include('includes/header.php')?>
 <?php include('../includes/session.php')?>
 
@@ -60,7 +59,6 @@
 						</thead>
 						<tbody>
 							<tr>
-                                                                <?php include('../includes/config.php')?>
 								<?php 
 								$status=1;
 								$sql = "SELECT tblleave.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.emp_id,tblemployees.Gender,tblemployees.Phonenumber,tblemployees.EmailId,tblemployees.Av_leave,tblemployees.Position_Staff,tblemployees.Staff_ID,tblleave.LeaveType,tblleave.ToDate,tblleave.FromDate,tblleave.PostingDate,tblleave.RequestedDays,tblleave.DaysOutstand,tblleave.WorkCovered,tblleave.HodRemarks,tblleave.RegRemarks,tblleave.HodDate,tblleave.RegDate,tblleave.num_days FROM tblleave JOIN tblemployees ON tblleave.empid = tblemployees.emp_id WHERE tblleave.HodRemarks = '$status' ORDER BY lid DESC LIMIT 10";
