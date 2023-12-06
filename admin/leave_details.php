@@ -27,7 +27,6 @@
 		$query= mysqli_query($conn,"select * from tblemployees where emp_id = '$session_id'")or die(mysqli_error());
         $row = mysqli_fetch_assoc($query);
 
-        $signature = $row['signature'];
 
 		$REMLEAVE = $av_leave - $num_days;
 
@@ -45,7 +44,7 @@
 			echo "<script>alert('Leave rejected Successfully');</script>";
 		}
 		elseif ($status === '1') {
-				$result = mysqli_query($conn,"update tblleave, tblemployees set tblleave.RegRemarks='$status',tblleave.RegSign='$signature',tblleave.RegDate='$admremarkdate',tblleave.DaysOutstand='$REMLEAVE', tblemployees.Av_leave='$REMLEAVE' where tblleave.empid = tblemployees.emp_id AND tblleave.id='$did'");
+				$result = mysqli_query($conn,"update tblleave, tblemployees set tblleave.RegRemarks='$status',tblleave.RegDate='$admremarkdate',tblleave.DaysOutstand='$REMLEAVE', tblemployees.Av_leave='$REMLEAVE' where tblleave.empid = tblemployees.emp_id AND tblleave.id='$did'");
 
 				if ($result) {
 			     	echo "<script>alert('Leave approved Successfully');</script>";
