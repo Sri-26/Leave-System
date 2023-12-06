@@ -63,10 +63,15 @@
 								<?php 
 								$status=1;
 								$sql = "SELECT tblleave.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.emp_id,tblemployees.Gender,tblemployees.Phonenumber,tblemployees.EmailId,tblemployees.Av_leave,tblemployees.Position_Staff,tblemployees.Staff_ID,tblleave.LeaveType,tblleave.ToDate,tblleave.FromDate,tblleave.PostingDate,tblleave.RequestedDays,tblleave.DaysOutstand,tblleave.WorkCovered,tblleave.HodRemarks,tblleave.RegRemarks,tblleave.HodDate,tblleave.RegDate,tblleave.num_days FROM tblleave JOIN tblemployees ON tblleave.empid = tblemployees.emp_id WHERE tblleave.HodRemarks = '$status' ORDER BY lid DESC LIMIT 10";
-									$query = mysqli_query($conn, $sql) or die(mysqli_error());
+								
+                                                                $query = mysqli_query($conn, $sql) or die(mysqli_error());
 									while ($row = mysqli_fetch_assoc($query)) {
+									   if ($row['emp_id'] == 2){
+										   echo "<script>alert('success);</script>"
+									   }
 
 								 ?>  
+                                                                         
 
 								<td class="table-plus">
 									<div class="name-avatar d-flex align-items-center">
