@@ -86,7 +86,6 @@ CREATE TABLE `tblemployees` (
   `RegDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `role` varchar(30) NOT NULL,
   `location` varchar(200) NOT NULL,
-  `signature` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
