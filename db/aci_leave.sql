@@ -85,7 +85,7 @@ CREATE TABLE `tblemployees` (
   `Status` varchar(10) NOT NULL,
   `RegDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `role` varchar(30) NOT NULL,
-  `location` varchar(200) NOT NULL,
+  `location` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
