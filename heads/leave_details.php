@@ -61,7 +61,7 @@
 			} 
 		}
 		elseif ($status === '1') {
-				$result = mysqli_query($conn,"update tblleave, tblemployees set tblleave.HodRemarks='$status',tblleave.HodSign='$signature',tblleave.HodDate='$admremarkdate' where tblleave.empid = tblemployees.emp_id AND tblleave.id='$did'");
+				$result = mysqli_query($conn,"update tblleave, tblemployees set tblleave.HodRemarks='$status',tblleave.HodDate='$admremarkdate' where tblleave.empid = tblemployees.emp_id AND tblleave.id='$did'");
 
 				if ($result) {
 					if (filter_var($hodEmail, FILTER_VALIDATE_EMAIL)){
