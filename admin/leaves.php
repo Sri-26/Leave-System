@@ -68,7 +68,7 @@
 								$results = $query->fetchAll(PDO::FETCH_OBJ); // Fetches all the results as objects
 								$empcount = $query->rowCount()
                                                                 
-									foreach ($results as $row) {
+								foreach($results as $row) {
 									
 								 ?>  
                                                                          
