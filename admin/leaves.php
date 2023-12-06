@@ -63,29 +63,29 @@
 								<?php 
 								$status=1;
 								$sql = "SELECT tblleave.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.emp_id,tblemployees.Gender,tblemployees.Phonenumber,tblemployees.EmailId,tblemployees.Av_leave,tblemployees.Position_Staff,tblemployees.Staff_ID,tblleave.LeaveType,tblleave.ToDate,tblleave.FromDate,tblleave.PostingDate,tblleave.RequestedDays,tblleave.DaysOutstand,tblleave.WorkCovered,tblleave.HodRemarks,tblleave.RegRemarks,tblleave.HodDate,tblleave.RegDate,tblleave.num_days FROM tblleave JOIN tblemployees ON tblleave.empid = tblemployees.emp_id WHERE tblleave.HodRemarks = '$status' ORDER BY lid DESC LIMIT 10";
-								
-                                                                $query = mysqli_query($conn, $sql) or die(mysqli_error());
-									while ($row = mysqli_fetch_assoc($query)) {
-									   if ($row['emp_id'] == 2){
-										   echo "<script>alert('success);</script>";
-									   }
-
+								$query = $dbh->prepare($sql); // Prepares the SQL query
+								$query->execute(); // Executes the query
+								$results = $query->fetchAll(PDO::FETCH_OBJ); // Fetches all the results as objects
+								$empcount = $query->rowCount()
+                                                                
+									foreach ($results as $row) {
+									
 								 ?>  
                                                                          
 
 								<td class="table-plus">
 									<div class="name-avatar d-flex align-items-center">
 										<div class="avatar mr-2 flex-shrink-0">
-											<img src="<?php echo (!empty($row['location'])) ? '../uploads/'.$row['location'] : '../uploads/NO-IMAGE-AVAILABLE.jpg'; ?>" class="border-radius-100 shadow" width="40" height="40" alt="">
+											<img src="<?php echo (!empty($row->location)) ? '../uploads/'.$row->location : '../uploads/NO-IMAGE-AVAILABLE.jpg'; ?>" class="border-radius-100 shadow" width="40" height="40" alt="">
 										</div>
 										<div class="txt">
-											<div class="weight-600"><?php echo $row['FirstName']." ".$row['LastName'];?></div>
+											<div class="weight-600"><?php echo $row->FirstName." ".$row->LastName;?></div>
 										</div>
 									</div>
 								</td>
-								<td><?php echo $row['LeaveType']; ?></td>
-	                            <td><?php echo $row['PostingDate']; ?></td>
-								<td><?php $stats=$row['HodRemarks'];
+								<td><?php echo $row->LeaveType; ?></td>
+	                            <td><?php echo $row->PostingDate; ?></td>
+								<td><?php $stats=$row->HodRemarks;
 	                             if($stats==1){
 	                              ?>
 	                                  <span style="color: green">Approved</span>
@@ -95,7 +95,7 @@
 	                             <span style="color: blue">Pending</span>
 	                             <?php } ?>
 	                            </td>
-	                            <td><?php $stats=$row['RegRemarks'];
+	                            <td><?php $stats=$row->RegRemarks;
 	                             if($stats==1){
 	                              ?>
 	                                  <span style="color: green">Approved</span>
@@ -111,8 +111,8 @@
 											<i class="dw dw-more"></i>
 										</a>
 										<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-											<a class="dropdown-item" href="leave_details.php?leaveid=<?php echo $row['lid']; ?>"><i class="dw dw-eye"></i> View</a>
-											<a class="dropdown-item" href="admin_dashboard.php?leaveid=<?php echo $row['lid']; ?>"><i class="dw dw-delete-3"></i> Delete</a>
+											<a class="dropdown-item" href="leave_details.php?leaveid=<?php echo $row->lid; ?>"><i class="dw dw-eye"></i> View</a>
+											<a class="dropdown-item" href="admin_dashboard.php?leaveid=<?php echo $row->lid; ?>"><i class="dw dw-delete-3"></i> Delete</a>
 										</div>
 									</div>
 								</td>
