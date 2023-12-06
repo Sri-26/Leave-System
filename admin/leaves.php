@@ -66,9 +66,10 @@
 								$query = $dbh->prepare($sql); // Prepares the SQL query
 								$query->execute(); // Executes the query
 								$results = $query->fetchAll(PDO::FETCH_OBJ); // Fetches all the results as objects
-								$empcount = $query->rowCount()
+								$empcount = $query->rowCount();
                                                                 
-								foreach($results as $row) {
+								foreach($results as $row) 
+								{
 									
 								 ?>  
                                                                          
