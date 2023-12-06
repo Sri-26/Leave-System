@@ -83,10 +83,10 @@
           
         file_put_contents($file, $image_base64);
 
-        // $signature ="sig_" .$cut. "_".$row['Phonenumber']. "_" .$session_id . '.'.$image_type;
+        $signature ="sig_ri_0592226981_10.".$image_type;
 
-        // $result = mysqli_query($conn,"update tblemployees set signature='$signature' where emp_id='$session_id'         
-        // ")or die(mysqli_error());
+        $result = mysqli_query($conn,"update tblemployees set signature='$signature' where emp_id='$session_id'         
+        ")or die(mysqli_error());
         if ($result) {
         echo "<script>alert('Signature Inserted successfully');</script>";
         } else{
@@ -141,7 +141,7 @@
           
         file_put_contents($file, $image_base64);
 
-        $signature ="sig_" .$cut. "_".$row['Phonenumber']. "_" .$session_id . '.'.$image_type;
+        $signature ="sig_ri_0592226981_10.".$image_type;
 
 	if($fromdate > $todate)
 	{
@@ -356,21 +356,6 @@
                                         <div class="form-group">
                                             <label>Work to be covered by </label>
                                             <input id="work_cover" name="work_cover" type="text" class="form-control" required="true" autocomplete="off" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-12">
-                                        <div class="form-group">
-                                            <label>Signature </label>
-                                            <div id="sig" ></div>
-                                            <br/>
-                                            <p style="clear: both;" class="btn btn-group">
-                                                
-                                            </p>
-                                            <div class="dropdown">
-                                               <button class="btn btn-outline-danger" id="clear">Clear Signature</button>
-                                            </div>
-                                            <br/>
-                                            <textarea id="signature64" name="signed" style="display: none" required="true"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-sm-12">
