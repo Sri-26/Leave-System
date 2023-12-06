@@ -1,3 +1,4 @@
+<?php session_start()?>
 <?php include('includes/header.php')?>
 <?php include('../includes/session.php')?>
 
@@ -66,7 +67,7 @@
 								$query->execute(); // Executes the query
 								$results = $query->fetchAll(PDO::FETCH_OBJ); // Fetches all the results as objects
 								$empcount = $query->rowCount();
-                                                                
+                                                                echo "<script>alert('Number of rows: ".$empcount."');</script>";
 								foreach($results as $row) 
 								{
 									
