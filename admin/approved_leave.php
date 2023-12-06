@@ -61,7 +61,7 @@
 							<tr>
 
 								<?php 
-								$status=1;
+								$status=0;
 								$reg_status=1;
 								$sql = "SELECT tblleave.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.emp_id,tblemployees.Gender,tblemployees.Phonenumber,tblemployees.EmailId,tblemployees.Av_leave,tblemployees.Position_Staff,tblemployees.Staff_ID,tblleave.LeaveType,tblleave.ToDate,tblleave.FromDate,tblleave.PostingDate,tblleave.RequestedDays,tblleave.DaysOutstand,tblleave.WorkCovered,tblleave.HodRemarks,tblleave.RegRemarks,tblleave.HodDate,tblleave.RegDate,tblleave.num_days from tblleave join tblemployees on tblleave.empid=tblemployees.emp_id where tblleave.HodRemarks= '$status' and tblleave.RegRemarks = '$reg_status' order by lid desc";
 									$query = mysqli_query($conn, $sql) or die(mysqli_error());
