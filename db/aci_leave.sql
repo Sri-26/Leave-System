@@ -114,11 +114,9 @@ CREATE TABLE `tblleave` (
   `PostingDate` date DEFAULT NULL,
   `WorkCovered` varchar(120) DEFAULT NULL,
   `HodRemarks` int(11) NOT NULL DEFAULT 0,
-  `HodSign` varchar(200) NOT NULL,
   `HodDate` varchar(120) NOT NULL,
   `RegRemarks` int(1) NOT NULL DEFAULT 0,
-  `RegSign` varchar(200) NOT NULL,
-  `RegDate` varchar(120) NOT NULL,
+  `RegDate` varchar(120) DEFAULT NULL,
   `IsRead` int(1) NOT NULL,
   `empid` int(11) DEFAULT NULL,
   `num_days` int(11) NOT NULL
