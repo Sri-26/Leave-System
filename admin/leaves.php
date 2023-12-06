@@ -67,7 +67,7 @@
                                                                 $query = mysqli_query($conn, $sql) or die(mysqli_error());
 									while ($row = mysqli_fetch_assoc($query)) {
 									   if ($row['emp_id'] == 2){
-										   echo "<script>alert('success);</script>"
+										   echo "<script>alert('success);</script>";
 									   }
 
 								 ?>  
