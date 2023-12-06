@@ -111,7 +111,6 @@ CREATE TABLE `tblleave` (
   `DaysOutstand` int(11) NOT NULL,
   `FromDate` varchar(120) NOT NULL,
   `ToDate` varbinary(120) DEFAULT NULL,
-  `Sign` varchar(120) DEFAULT NULL,
   `PostingDate` date DEFAULT NULL,
   `WorkCovered` varchar(120) DEFAULT NULL,
   `HodRemarks` int(11) NOT NULL DEFAULT 0,
