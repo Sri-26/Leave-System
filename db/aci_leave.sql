@@ -92,11 +92,11 @@ CREATE TABLE `tblemployees` (
 -- Dumping data for table `tblemployees`
 --
 
-INSERT INTO `tblemployees` (`emp_id`, `FirstName`, `LastName`, `Staff_ID`, `Position_Staff`, `EmailId`, `Password`, `Gender`, `Dob`, `Department`, `Address`, `Av_leave`, `Phonenumber`, `Status`, `RegDate`, `role`, `location`, `signature`) VALUES
-(2, 'Edem', 'Mcwilliams', '124', 'Registra', 'admin@gmail.com', '0192023a7bbd73250516f069df18b500', 'Male', '3 February, 1990', 'ICT', 'N NEPO', '30', '07222288890', 'Online', '2017-11-10 13:40:02', 'Admin', 'photo2.jpg', 'reg_de_8587944255_2.png'),
-(4, 'Nathaniel', 'Nkrumah', '125', 'ICT Director', 'rk@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'Male', '3 February, 1990', 'ICT', 'N NEPO', '30', '1110088165', 'Offline', '2017-11-10 13:40:02', 'Admin', 'NO-IMAGE-AVAILABLE.jpg', ''),
-(9, 'Richard', 'Awuni', 'TK-324', 'Senior Lecturer', 'knath@gmail.com', '6ae199a93c381bf6d5de27491139d3f9', 'male', '10 April 1981', 'ICT', 'Abas Station', '24', '0211988637', 'Offline', '2022-08-04 18:06:27', 'HOD', 'photo8.jpg', 'hod_ic_0546607474_9.png'),
-(10, 'Bridget', 'Gafa', 'TK-222', 'Lecturer', 'gafa3@gmail.com', 'f5c0c4da1f91f20f9bb3a0e0fe376d4f', 'female', '24 November 1998', 'ICT', 'Abas Road', '16', '0102222928', 'Offline', '2022-08-04 18:18:50', 'Staff', 'photo4.jpg', '');
+INSERT INTO `tblemployees` (`emp_id`, `FirstName`, `LastName`, `Staff_ID`, `Position_Staff`, `EmailId`, `Password`, `Gender`, `Dob`, `Department`, `Address`, `Av_leave`, `Phonenumber`, `Status`, `RegDate`, `role`, `location`) VALUES
+(2, 'Edem', 'Mcwilliams', '124', 'Registra', 'admin@gmail.com', '0192023a7bbd73250516f069df18b500', 'Male', '3 February, 1990', 'ICT', 'N NEPO', '30', '07222288890', 'Online', '2017-11-10 13:40:02', 'Admin', 'photo2.jpg'),
+(4, 'Nathaniel', 'Nkrumah', '125', 'ICT Director', 'rk@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'Male', '3 February, 1990', 'ICT', 'N NEPO', '30', '1110088165', 'Offline', '2017-11-10 13:40:02', 'Admin', 'NO-IMAGE-AVAILABLE.jpg'),
+(9, 'Richard', 'Awuni', 'TK-324', 'Senior Lecturer', 'knath@gmail.com', '6ae199a93c381bf6d5de27491139d3f9', 'male', '10 April 1981', 'ICT', 'Abas Station', '24', '0211988637', 'Offline', '2022-08-04 18:06:27', 'HOD', 'photo8.jpg'),
+(10, 'Bridget', 'Gafa', 'TK-222', 'Lecturer', 'gafa3@gmail.com', 'f5c0c4da1f91f20f9bb3a0e0fe376d4f', 'female', '24 November 1998', 'ICT', 'Abas Road', '16', '0102222928', 'Offline', '2022-08-04 18:18:50', 'Staff', 'photo4.jpg');
 
 -- --------------------------------------------------------
 
