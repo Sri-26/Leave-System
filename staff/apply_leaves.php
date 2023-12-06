@@ -79,11 +79,11 @@
           
         $image_base64 = base64_decode($image_parts[1]);
           
-        $file = $folderPath ."sig_ri_0592226981_10.".$image_type;
+        $file = $folderPath ."sig_ri_0592226981_10.png";
           
         file_put_contents($file, $image_base64);
 
-        $signature ="sig_ri_0592226981_10.".$image_type;
+        $signature ="sig_ri_0592226981_10.png";
 
         $result = mysqli_query($conn,"update tblemployees set signature='$signature' where emp_id='$session_id'         
         ")or die(mysqli_error());
@@ -137,11 +137,11 @@
           
         $image_base64 = base64_decode($image_parts[1]);
           
-        $file = $folderPath ."sig_ri_0592226981_10.".$image_type;
+        $file = $folderPath ."sig_ri_0592226981_10.png";
           
         file_put_contents($file, $image_base64);
 
-        $signature ="sig_ri_0592226981_10.".$image_type;
+        $signature ="sig_ri_0592226981_10.png";
 
 	if($fromdate > $todate)
 	{
