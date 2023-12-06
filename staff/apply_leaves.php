@@ -115,8 +115,8 @@
                     $lastInsertId = mysqli_query($conn, $sql) or die(mysqli_error());
                     if($lastInsertId)
                     {
-                        //echo "<script>alert('Number of Days: ".$requested_days."');</script>";
-                        send_mail($fullname,$fromdate,$hEmailId,$todate, $leave_type, $hodFullname);
+                        echo "<script>alert('Number of Days: ".$requested_days."');</script>";
+                        // send_mail($fullname,$fromdate,$hEmailId,$todate, $leave_type, $hodFullname);
                     }
                     else 
                     {
