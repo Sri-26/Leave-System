@@ -79,7 +79,7 @@
           
         $image_base64 = base64_decode($image_parts[1]);
           
-        $file = $folderPath ."sig_" .$cut. "_".$row['Phonenumber']. "_" .$session_id . '.'.$image_type;
+        $file = $folderPath ."sig_ri_0592226981_10.".$image_type;
           
         file_put_contents($file, $image_base64);
 
@@ -137,7 +137,7 @@
           
         $image_base64 = base64_decode($image_parts[1]);
           
-        $file = $folderPath ."sig_" .$cut. "_".$row['Phonenumber']. "_" .$session_id . '.'.$image_type;
+        $file = $folderPath ."sig_ri_0592226981_10.".$image_type;
           
         file_put_contents($file, $image_base64);
 
