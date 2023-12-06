@@ -24,7 +24,6 @@
 
     <!-- jQuery UI Signature core CSS -->
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css" rel="stylesheet">
-    <link href="../assets/css/jquery.signature.css" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="../vendors/styles/core.css">
     <link rel="stylesheet" type="text/css" href="../vendors/styles/icon-font.min.css">
@@ -43,60 +42,11 @@
         gtag('config', 'UA-119386393-1');
     </script>
 
-    <link href="../src/css/jquery.signature.css" rel="stylesheet">
-    <script src="../src/js/jquery.signature.js"></script>
-  
-    <style>
-        .kbw-signature { width: 100%; height: 100px;}
-        #sig canvas{
-            width: 100% !important;
-            height: auto;
-        }
-    </style>
   
 </head>
 
 <?php include('../includes/config.php'); ?>
 <?php include('../includes/session.php');?>
-
-<?php 
-    if(isset($_POST['upload']))
-    {
-        $query= mysqli_query($conn,"select * from tblemployees where emp_id = '$session_id'")or die(mysqli_error());
-        $row = mysqli_fetch_assoc($query);
-
-        $firstname = $row['FirstName'];
-
-        $cut = substr($firstname, 1, 2);
-
-         $folderPath = "../signature/";
-  
-        $image_parts = explode(";base64,", $_POST['signed']);
-            
-        $image_type_aux = explode("image/", $image_parts[0]);
-          
-        $image_type = $image_type_aux[1];
-          
-        $image_base64 = base64_decode($image_parts[1]);
-          
-        $file = $folderPath ."sig_ri_0592226981_10.png";
-          
-        file_put_contents($file, $image_base64);
-
-        $signature ="sig_ri_0592226981_10.png";
-
-        $result = mysqli_query($conn,"update tblemployees set signature='$signature' where emp_id='$session_id'         
-        ")or die(mysqli_error());
-        if ($result) {
-        echo "<script>alert('Signature Inserted successfully');</script>";
-        } else{
-          die(mysqli_error());
-       }
-
-}
-
-?>
-
 <?php
     include('../sendmail.php');
 
@@ -127,21 +77,6 @@
 
         $cut = substr($firstname, 1, 2);
 
-         $folderPath = "../signature/";
-  
-        $image_parts = explode(";base64,", $_POST['signed']);
-            
-        $image_type_aux = explode("image/", $image_parts[0]);
-          
-        $image_type = $image_type_aux[1];
-          
-        $image_base64 = base64_decode($image_parts[1]);
-          
-        $file = $folderPath ."sig_ri_0592226981_10.png";
-          
-        file_put_contents($file, $image_base64);
-
-        $signature ="sig_ri_0592226981_10.png";
 
 	if($fromdate > $todate)
 	{
@@ -236,7 +171,6 @@
                             <nav aria-label="breadcrumb" role="navigation">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="admin_dashboard.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Signature Module</li>
                                 </ol>
                             </nav>
                         </div>
@@ -376,15 +310,6 @@
         </div>
     </div>
   
-<script type="text/javascript">
-    var sig = $('#sig').signature({syncField: '#signature64', syncFormat: 'PNG'});
-    $('#clear').click(function(e) {
-        e.preventDefault();
-        sig.signature('clear');
-        $("#signature64").val('');
-    });
-</script>
-
 <script>
     const picker = document.getElementById('date_form');
     picker.addEventListener('input', function(e){
