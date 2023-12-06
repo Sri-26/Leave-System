@@ -83,10 +83,10 @@
           
         file_put_contents($file, $image_base64);
 
-        $signature ="sig_" .$cut. "_".$row['Phonenumber']. "_" .$session_id . '.'.$image_type;
+        // $signature ="sig_" .$cut. "_".$row['Phonenumber']. "_" .$session_id . '.'.$image_type;
 
-        $result = mysqli_query($conn,"update tblemployees set signature='$signature' where emp_id='$session_id'         
-        ")or die(mysqli_error());
+        // $result = mysqli_query($conn,"update tblemployees set signature='$signature' where emp_id='$session_id'         
+        // ")or die(mysqli_error());
         if ($result) {
         echo "<script>alert('Signature Inserted successfully');</script>";
         } else{
