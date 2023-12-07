@@ -5,17 +5,26 @@ if(isset($_POST['signin']))
 {
 	$username=$_POST['username'];
 	$password=md5($_POST['password']);
+         $data=array('email'=>$uname,'password'=>$password);
+   
+	   $azfendpoint='https://function189.azurewebsites.net/api/HttpTrigger1?code=xr704XgbAIiQmoxP3y5qN13kzjwKd8pRkfhK-h64pIeWAzFuRqmysg==';
+	   $options = array(
+	        'http' => array(
+	            'method' => 'POST',
+	            'content' => json_encode($data)
+	        )
+	    );
+	    $context = stream_context_create($options);
+	    $result = file_get_contents($azfendpoint, false, $context);
+       if ($result !== FALSE) {
+	$response = json_decode($result, true);
 
-	$sql ="SELECT * FROM tblemployees where EmailId ='$username' AND Password ='$password'";
-	$query= mysqli_query($conn, $sql);
-	$count = mysqli_num_rows($query);
-	if($count > 0)
-	{
-		while ($row = mysqli_fetch_assoc($query)) {
-		    if ($row['role'] == 'Admin') {
-		    	$_SESSION['alogin']=$row['emp_id'];
-		    	$_SESSION['arole']=$row['role'];
-		    	$_SESSION['adepart']=$row['Department'];
+	// Check if authentication was successful
+	if ($response['authenticated']) {
+		    if ($response['role'] == 'Admin') {
+		    	$_SESSION['alogin']=$response['emp_id'];
+		    	$_SESSION['arole']=$response['role'];
+		    	$_SESSION['adepart']=$response['Department'];
 				
 			    //login active status
                 $emp_id =  $_SESSION['alogin'];
@@ -23,10 +32,10 @@ if(isset($_POST['signin']))
 
 			 	echo "<script type='text/javascript'> document.location = 'admin/admin_dashboard.php'; </script>";
 		    }
-		    elseif ($row['role'] == 'Staff') {
-		    	$_SESSION['alogin']=$row['emp_id'];
-		    	$_SESSION['arole']=$row['role'];
-		    	$_SESSION['adepart']=$row['Department'];
+		    elseif ($response['role'] == 'Staff') {
+		    	$_SESSION['alogin']=$response['emp_id'];
+		    	$_SESSION['arole']=$response['role'];
+		    	$_SESSION['adepart']=$response['Department'];
 				
 				//login active status
                 $emp_id =  $_SESSION['alogin'];
@@ -35,9 +44,9 @@ if(isset($_POST['signin']))
 			 	echo "<script type='text/javascript'> document.location = 'staff/index.php'; </script>";
 		    }
 		    else {
-		    	$_SESSION['alogin']=$row['emp_id'];
-		    	$_SESSION['arole']=$row['role'];
-		    	$_SESSION['adepart']=$row['Department'];
+		    	$_SESSION['alogin']=$response['emp_id'];
+		    	$_SESSION['arole']=$response['role'];
+		    	$_SESSION['adepart']=$response['Department'];
 				
 			    //login active status
                 $emp_id =  $_SESSION['alogin'];
@@ -46,8 +55,19 @@ if(isset($_POST['signin']))
 			 	echo "<script type='text/javascript'> document.location = 'heads/index.php'; </script>";
 		    }
 
-		}
-
+	} else {
+		// Authentication failed, handle accordingly
+		echo "<script>alert('Invalid Details');</script>";
+	}
+} else {
+	// Error in communicating with Azure Function
+	   echo "<script>not authenticated</script>";
+  
+}
+	
+	if($count > 0)
+	{
+		
 	} 
 	else{
 	  echo "<script>alert('Invalid Details');</script>";
