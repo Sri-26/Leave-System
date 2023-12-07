@@ -64,15 +64,6 @@ if(isset($_POST['signin']))
 	   echo "<script>not authenticated</script>";
   
 }
-	
-	if($count > 0)
-	{
-		
-	} 
-	else{
-	  echo "<script>alert('Invalid Details');</script>";
-
-	}
 
 }
 // $_SESSION['alogin']=$_POST['username'];
