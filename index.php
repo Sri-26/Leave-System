@@ -18,9 +18,10 @@ if(isset($_POST['signin']))
 	    $result = file_get_contents($azfendpoint, false, $context);
        if ($result !== FALSE) {
 	$response = json_decode($result, true);
-
+        
 	// Check if authentication was successful
 	if ($response['authenticated']) {
+		echo "<script>not authenticated</script>";
 		    if ($response['role'] == 'Admin') {
 		    	$_SESSION['alogin']=$response['emp_id'];
 		    	$_SESSION['arole']=$response['role'];
