@@ -5,7 +5,7 @@ if(isset($_POST['signin']))
 {
 	$username=$_POST['username'];
 	$password=md5($_POST['password']);
-         $data=array('email'=>$uname,'password'=>$password);
+         $data=array('email'=>$username,'password'=>$password);
    
 	   $azfendpoint='https://az-funcauth.azurewebsites.net/api/HttpTrigger1?code=yl8PWMSuQ_yeLxld0QJ0ythrg3KwMhS0CK45lSR0-GaFAzFuhKjj8Q==';
 	   $options = array(
